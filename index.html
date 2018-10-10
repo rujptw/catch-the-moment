@@ -172,7 +172,87 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h4 id="JS是单线程的"><a href="#JS是单线程的" class="headerlink" title="JS是单线程的"></a>JS是单线程的</h4><ol>
+<li>意义：任务是串行的，只能一步一步地去做。</li>
+<li>缺点：可能会造成长时间的等待</li>
+<li>怎么解决:异步，能够同时做多项任务,提高了效率，虽然JS是单线程的。</li>
+<li>流程：通过将任务交给相应的异步模块去处理，主线程的效率大大提升，可以并行的去处理其他的操作。当异步处理完成，主线程空闲时，主线程读取相应的callback，进行后续的操作，最大程度的利用CPU。</li>
+<li><p>流程图：</p>
+<p> <img src="https://upload-images.jianshu.io/upload_images/8182473-b48115065e3d001e.png" alt=""></p>
+</li>
+<li><p>说明：</p>
+</li>
+<li><p>如上图为事件循环示例图（或JS运行机制图），流程如下</p>
+<ol>
+<li>step1: 主线程读取JS代码，此时为同步环境，形成相应的堆和执行栈；</li>
+<li>step2: 主线程遇到异步任务，指给对应的异步进程进行处理（WEB API）;</li>
+<li>step3: 异步进程处理完毕（Ajax返回、DOM事件处罚、Timer到等），将相应的异步任务推入任务队列；</li>
+<li>step4: 主线程执行完毕，查询任务队列，如果存在任务，则取出一个任务推入主线程处理（先进先出）；</li>
+<li>step5: 重复执行step2、3、4；称为事件循环。</li>
+</ol>
+</li>
+<li><p>执行的大意：同步环境执行(step1) -&gt; 事件循环1(step4) -&gt; 事件循环2(step4的重复)…
+　</p>
+</li>
+<li>其中的异步进程有：</li>
+</ol>
+<ul>
+<li>a、类似onclick等，由浏览器内核的DOM binding模块处理，事件触发时，回调函数添加到任务队列中；</li>
+<li>b、setTimeout等，由浏览器内核的Timer模块处理，时间到达时，回调函数添加到任务队列中；</li>
+<li>c、Ajax，由浏览器内核的Network模块处理，网络请求返回后，添加到任务队列中</li>
+</ul>
+<ol start="10">
+<li>任务队列：</li>
+</ol>
+<ul>
+<li><p>分类: 1. <strong>microtask queue</strong> 2. <strong>macrotask queue</strong> </p>
+</li>
+<li><p>上面的a,b，c均属于macrotask queue，它的api: setTimeout, setInterval, setImmediate, I/O, UI rendering</p>
+</li>
+<li><p>microtask queue 的api:process.nextTick, Promise, MutationObserver</p>
+</li>
+<li><p>macrotask任务会优先于microtask执行,任务队列分为 macrotasks 和 microtasks, 而promise中的then方法的函数会被推入到microtasks队列中，而setTimeout函数会被推入到macrotasks任务队列中，在每一次事件循环中，macrotask只会提取一个执行，而microtask会一直提取，直到microsoft队列为空为止。</p>
+</li>
+<li><p>代码为证</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">console.log(&apos;1, time = &apos; + new Date().toString())</span><br><span class="line">    setTimeout(macroCallback, 0);</span><br><span class="line">    new Promise(function(resolve, reject) &#123;</span><br><span class="line">        console.log(&apos;2, time = &apos; + new Date().toString())</span><br><span class="line">        resolve();</span><br><span class="line">        console.log(&apos;3, time = &apos; + new Date().toString())</span><br><span class="line">    &#125;).then(microCallback);</span><br><span class="line"></span><br><span class="line">    function macroCallback() &#123;</span><br><span class="line">        console.log(&apos;4, time = &apos; + new Date().toString())</span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    function microCallback() &#123;</span><br><span class="line">        console.log(&apos;5, time = &apos; + new Date().toString())</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">依次打印为:1,2,3,5,4</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="11">
+<li>更完整的事件循环流程    </li>
+</ol>
+<blockquote>
+<p>将microtask加入到JS运行机制流程中，则：</p>
+</blockquote>
+<ul>
+<li><p>step1、2、3同上，</p>
+</li>
+<li><p>step4：主线程查询任务队列，执行microtask queue，将其按序执行，全部执行完毕；</p>
+</li>
+<li><p>step5：主线程查询任务队列，执行macrotask queue，取队首任务执行，执行完毕；</p>
+</li>
+<li><p>step6：重复step4、step5。</p>
+</li>
+<li><p>microtask queue中的所有callback处在同一个事件循环中，而macrotask queue中的callback有自己的事件循环。</p>
+</li>
+<li><p>简而言之：同步环境执行 -&gt; 事件循环1（microtask queue的All）-&gt; 事件循环2(macrotask queue中的一个) -&gt; 事件循环1（microtask queue的All）-&gt; 事件循环2(macrotask queue中的一个)…</p>
+</li>
+<li><p>利用microtask queue可以形成一个同步执行的环境，但如果Microtask queue太长，将导致Macrotask任务长时间执行不了，最终导致用户I/O无响应等，所以使用需慎重。</p>
+</li>
+<li><p>为什么要用promise，async:  </p>
+</li>
+</ul>
+<ol>
+<li>根据 HTML Standrad， 在每个task运行完以后，UI都会重新渲染，那么在    microCallback完成数据更新，因此当前task结束就可以得到最新的UI了。    反 之：如果新建一个task(例如ajax)来做数据更新的话，那么渲染会执行两次。</li>
+</ol>
+<blockquote>
+<p>参考:</p>
+<ul>
+<li><a href="http://www.cnblogs.com/hity-tt/p/6733062.html" target="_blank" rel="noopener">JS 事件循环机制 - 任务队列、web API、JS主线程的相互协同</a></li>
+<li><a href="https://www.zhihu.com/question/55364497/answer/144215284" target="_blank" rel="noopener">Vue 中如何使用 MutationObserver 做批量处理？</a></li>
+<li><a href="http://www.cnblogs.com/hity-tt/p/6733062.html" target="_blank" rel="noopener">javascript中的异步 macrotask 和 microtask 简介</a></li>
+</ul>
+</blockquote>
+
       
 
       
