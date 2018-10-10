@@ -152,6 +152,112 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-vue的生命周期" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/catch-the-moment/2018/10/10/vue的生命周期/">vue的生命周期</a>
+    </h1>
+  
+
+        
+        <a href="/catch-the-moment/2018/10/10/vue的生命周期/" class="archive-article-date">
+  	<time datetime="2018-10-10T11:00:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>生命周期流程图<br><img src="https://cn.vuejs.org/images/lifecycle.png" alt="图示"></p>
+</blockquote>
+<blockquote>
+<p>各个阶段的生命周期钩子函数</p>
+<ol>
+<li>beforeCreate:运行此函数时,vue实例处于初始阶段<ul>
+<li><strong>el</strong>,<strong>data</strong>,<em>methods方法</em>都为undefined,即拿不到</li>
+</ul>
+</li>
+<li>created:运行此函数时:<ul>
+<li><strong>el</strong>为undefined,<strong>data</strong>,<em>methods方法</em>都可以拿到</li>
+</ul>
+</li>
+<li>beforeMount:运行此函数时:<ul>
+<li><strong>el</strong>为undefined,<strong>data</strong>,<em>methods方法</em>都可以拿到</li>
+</ul>
+</li>
+<li>mounted:运行此函数时:<ul>
+<li><strong>el</strong>,<strong>data</strong>,<em>methods方法</em>都可以拿到,拿到的<strong>Vnode</strong>为虚拟dom(待考证)</li>
+<li>复杂场景下，必须使用 <code>nextTick</code>才能获取真实的dom</li>
+</ul>
+</li>
+<li>beforeUpdate:运行此函数时:<ul>
+<li><strong>el</strong>,<strong>data</strong>,<em>methods方法</em>都可以拿到,但<strong>data</strong>里的数据已经发生变化</li>
+</ul>
+</li>
+<li>updated:运行此函数时:<ul>
+<li><strong>el</strong>,<strong>data</strong>,<em>methods方法</em>都可以拿到,<strong>data</strong>里的数据为前一个钩子时的数据</li>
+</ul>
+</li>
+<li>beforeDestory:运行此函数时:<ul>
+<li><strong>el</strong>,<strong>data</strong>,<em>methods方法</em>都可以拿到</li>
+</ul>
+</li>
+<li>destoryed:运行此函数时:<ul>
+<li><strong>el</strong>已经被销毁,<strong>data</strong>,<em>methods方法</em>都可以拿到,Vue实例被销毁,vue实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>后记:得看源码了，不过觉得挺有意思的</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/catch-the-moment/2018/10/10/vue的生命周期/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-js的异步" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
