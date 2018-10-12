@@ -6,22 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://rujptw.github.io/catch-the-moment">
-  <title>Hexo</title>
+  <title>test | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title: vue的生命周期date: 2018-10-12 16:17:27tags:   生命周期流程图   各个阶段的生命周期钩子函数  beforeCreate:运行此函数时,vue实例处于初始阶段 el,data,methods方法都为undefined,即拿不到 可做loading   created:运行此函数时: el为undefined,data,methods方法都可以拿到">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://rujptw.github.io/catch-the-moment/2018/10/10/vue的生命周期/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="test">
+<meta property="og:url" content="https://rujptw.github.io/catch-the-moment/test/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="title: vue的生命周期date: 2018-10-12 16:17:27tags:   生命周期流程图   各个阶段的生命周期钩子函数  beforeCreate:运行此函数时,vue实例处于初始阶段 el,data,methods方法都为undefined,即拿不到 可做loading   created:运行此函数时: el为undefined,data,methods方法都可以拿到">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://cn.vuejs.org/images/lifecycle.png">
-<meta property="og:image" content="https://rujptw.github.io/catch-the-moment/2018/10/10/vue的生命周期/生命周期流程图.png">
-<meta property="og:updated_time" content="2018-10-12T08:21:37.088Z">
+<meta property="og:updated_time" content="2018-10-12T08:27:55.296Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="title: vue的生命周期date: 2018-10-12 16:17:27tags:   生命周期流程图   各个阶段的生命周期钩子函数  beforeCreate:运行此函数时,vue实例处于初始阶段 el,data,methods方法都为undefined,即拿不到 可做loading   created:运行此函数时: el为undefined,data,methods方法都可以拿到">
-<meta name="twitter:image" content="https://cn.vuejs.org/images/lifecycle.png">
+<meta name="twitter:title" content="test">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -157,88 +151,27 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-vue的生命周期" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      test
+    </h1>
+  
+
+        
+        <a href="/catch-the-moment/test/index.html" class="archive-article-date">
+  	<time datetime="2018-10-12T08:27:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-12</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>title: vue的生命周期<br>date: 2018-10-12 16:17:27<br>tags:</p>
-<hr>
-<blockquote>
-<p>生命周期流程图<br><img src="https://cn.vuejs.org/images/lifecycle.png" alt="图示"></p>
-</blockquote>
-<blockquote>
-<p>各个阶段的生命周期钩子函数</p>
-<ol>
-<li>beforeCreate:运行此函数时,vue实例处于初始阶段<ul>
-<li><strong>el</strong>,<strong>data</strong>,<em>methods方法</em>都为undefined,即拿不到</li>
-<li>可做loading</li>
-</ul>
-</li>
-<li>created:运行此函数时:<ul>
-<li><strong>el</strong>为undefined,<strong>data</strong>,<em>methods方法</em>都可以拿到</li>
-<li>可以初始化一些数据</li>
-</ul>
-</li>
-<li>beforeMount:运行此函数时:<ul>
-<li><strong>el</strong>为undefined,<strong>data</strong>,<em>methods方法</em>都可以拿到</li>
-</ul>
-</li>
-<li>mounted:运行此函数时:<ul>
-<li><strong>el</strong>,<strong>data</strong>,<em>methods方法</em>都可以拿到,拿到的<strong>Vnode</strong>为虚拟dom(待考证)</li>
-<li>复杂场景下，必须使用 <code>nextTick</code>才能获取真实的dom</li>
-<li>发起请求，避免获取数据为空</li>
-</ul>
-</li>
-<li>beforeUpdate:运行此函数时:<ul>
-<li><strong>el</strong>,<strong>data</strong>,<em>methods方法</em>都可以拿到,但<strong>data</strong>里的数据已经发生变化,但dom还没有被重新渲染</li>
-<li>此时可以对数据进行更改</li>
-</ul>
-</li>
-<li>updated:运行此函数时:<ul>
-<li><strong>el</strong>,<strong>data</strong>,<em>methods方法</em>都可以拿到,<strong>data</strong>里的数据为前一个钩子时的数据,此时dom已经重新渲染</li>
-</ul>
-</li>
-<li>beforeDestory:运行此函数时:<ul>
-<li><strong>el</strong>,<strong>data</strong>,<em>methods方法</em>都可以拿到</li>
-</ul>
-</li>
-<li>destoryed:运行此函数时:<ul>
-<li><strong>el</strong>已经被销毁,<strong>data</strong>,<em>methods方法</em>都可以拿到,Vue实例被销毁,vue实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁</li>
-</ul>
-</li>
-<li>流程图：<br> <img src="./生命周期流程图.png" alt="流程图"></li>
-</ol>
-</blockquote>
-<blockquote>
-<p>只在keep-alive组件下才能生效的钩子</p>
-<ul>
-<li>为什么要用:vue每一次切换路由时都会重新创建组件,但是有时候你想保留上次浏览的状态或者提高性能避免重新渲染都可以用到.</li>
-<li>怎么用  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;keep-alive&gt;</span><br><span class="line">    &lt;component&gt;&lt;/component&gt;</span><br><span class="line">&lt;/keep-alive&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</blockquote>
-<ul>
-<li>keep-alive上的属性<strong>include</strong>和<strong>exclude</strong><ul>
-<li><strong>include</strong>,会缓存匹配到的组件,例如 <code>include=another</code>,another组件就会被缓存到内存中去，下次切换到该组件就能避免再次渲染</li>
-<li><strong>exclude</strong>,不会缓存比配到的组件,该组件会经历再次被渲染的过程</li>
-</ul>
-</li>
-<li>actived:运行此函数时:<ul>
-<li>首次进入组件的该钩子触发顺序在mounted之后,之后再次进入就<strong>只会触发actived</strong></li>
-<li>想要重新渲染组件可在该钩子上发起请求,此时mounted已经不会触发,数据更新会触发 <code>beforeUpdate</code>和<code>updated</code>钩子</li>
-</ul>
-</li>
-<li>deactived:运行此函数时：<ul>
-<li>组件被缓存后,离开组件后会触发,此后<strong>除了deactived和actived会被触发，其他钩子会处于禁用的状态</strong></li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>后记:得看源码了，不过觉得挺有意思的</p>
-</blockquote>
-
+        
       
 
       
@@ -317,7 +250,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://rujptw.github.io/catch-the-moment/2018/10/10/vue的生命周期/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://rujptw.github.io/catch-the-moment/test/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -329,25 +262,6 @@
 </article>
 
   
-<nav id="article-nav">
-  
-    <a href="/catch-the-moment/2018/10/12/test/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          test
-        
-      </div>
-    </a>
-  
-  
-    <a href="/catch-the-moment/2018/10/10/js的异步/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">js的异步</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -398,7 +312,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
