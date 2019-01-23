@@ -6,16 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://rujptw.github.io/catch-the-moment">
-  <title>test | Hexo</title>
+  <title>&#39;动态组件加载和异步组件加载&#39; | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="test">
-<meta property="og:url" content="https://rujptw.github.io/catch-the-moment/test/index.html">
+  <meta name="description" content="###动态加载  使用keep-alive保持组件状态,is属性切换组件 优点：适合渲染静态组件 缺点：如需更新组件状态，需要调用activated和deactivated手动更新12345678910111213141516171819202122232425262728293031323334353637383940&amp;lt;template&amp;gt;&amp;lt;div&amp;gt;&amp;lt;keep-ali">
+<meta property="og:type" content="article">
+<meta property="og:title" content="&#39;动态组件加载和异步组件加载&#39;">
+<meta property="og:url" content="https://rujptw.github.io/catch-the-moment/2019/01/22/动态组件和异步组件/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="###动态加载  使用keep-alive保持组件状态,is属性切换组件 优点：适合渲染静态组件 缺点：如需更新组件状态，需要调用activated和deactivated手动更新12345678910111213141516171819202122232425262728293031323334353637383940&amp;lt;template&amp;gt;&amp;lt;div&amp;gt;&amp;lt;keep-ali">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-12T08:27:55.296Z">
+<meta property="og:updated_time" content="2019-01-23T03:50:13.772Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test">
+<meta name="twitter:title" content="&#39;动态组件加载和异步组件加载&#39;">
+<meta name="twitter:description" content="###动态加载  使用keep-alive保持组件状态,is属性切换组件 优点：适合渲染静态组件 缺点：如需更新组件状态，需要调用activated和deactivated手动更新12345678910111213141516171819202122232425262728293031323334353637383940&amp;lt;template&amp;gt;&amp;lt;div&amp;gt;&amp;lt;keep-ali">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -151,27 +154,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-动态组件和异步组件" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      test
+      &#39;动态组件加载和异步组件加载&#39;
     </h1>
   
 
         
-        <a href="/catch-the-moment/test/index.html" class="archive-article-date">
-  	<time datetime="2018-10-12T08:27:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-12</time>
+        <a href="/catch-the-moment/2019/01/22/动态组件和异步组件/" class="archive-article-date">
+  	<time datetime="2019-01-22T03:52:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>###动态加载</p>
+<ol>
+<li>使用keep-alive保持组件状态,is属性切换组件<ul>
+<li>优点：适合渲染静态组件</li>
+<li>缺点：如需更新组件状态，需要调用activated和deactivated手动更新<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">&lt;keep-alive&gt;</span><br><span class="line">&lt;component :is=&quot;chooseNews&quot;&gt;&lt;/component&gt;</span><br><span class="line">&lt;/keep-alive&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123;culture&#125; from &apos;./culture&apos;</span><br><span class="line">//import静态引入:当渲染到它的父组件时，就加载politics组件的代码</span><br><span class="line">import &#123;politics&#125; from &apos;./politics&apos;</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  props:&#123;</span><br><span class="line">    topic:&#123;</span><br><span class="line">      type:String</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  el:&quot;#app&quot;,</span><br><span class="line">  component:&#123;</span><br><span class="line">    //组件异步加载,用到才加载代码，然后缓存,结合动态组件</span><br><span class="line">    travel:()=&gt;import(&apos;./travel&apos;),</span><br><span class="line">    culture,</span><br><span class="line">    politics</span><br><span class="line">  &#125;,</span><br><span class="line">  computed:&#123;</span><br><span class="line">    chooseNews()&#123;</span><br><span class="line">    let topic = this.topic</span><br><span class="line">    if(topic === &apos;culture&apos;)&#123;</span><br><span class="line">      return &quot;culture&quot;</span><br><span class="line">    &#125;else if(topic === &apos;travel&apos;)&#123;</span><br><span class="line">      return &quot;travel&quot;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">      return &quot;politics&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="异步加载：组件加载-路由加载"><a href="#异步加载：组件加载-路由加载" class="headerlink" title="异步加载：组件加载/路由加载"></a>异步加载：组件加载/路由加载</h3><blockquote>
+<p>用到了import的动态加载 <strong>import(‘./travel’)</strong>,返回一个<strong>promise</strong>,可以做进一步处理。</p>
+</blockquote>
+<ol>
+<li><p>组件加载: 在父组件内使用,用到才加载子组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">component:&#123;</span><br><span class="line">    //组件异步加载,用到才加载代码，然后缓存,结合动态组件</span><br><span class="line">    travel:()=&gt;import(&apos;./travel&apos;),</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>路由加载: 到达某个特定的url地址才加载.</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">new VueRouter([</span><br><span class="line">  &#123;</span><br><span class="line">    name:&apos;politics&apos;,</span><br><span class="line">    path:&apos;./politics&apos;</span><br><span class="line">    //到了&apos;/politics&apos;,才会加载politics组件,此外还可以指定webpackChunkName,为分割的js指定名字，不指定则由webpack</span><br><span class="line">    自行指定。</span><br><span class="line">    component: ()=&gt;import(/*webpackChunkName:politics*/&apos;./politics&apos;),</span><br><span class="line">  &#125;</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><p>异步组件过大/出错怎么处理:</p>
+<ol>
+<li>加loading</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">例子：</span><br><span class="line">  components: &#123;</span><br><span class="line">  asycHello:()=&gt;(&#123;</span><br><span class="line">    //引入异步组件</span><br><span class="line">    component:import(&apos;./components/HelloWorld&apos;),</span><br><span class="line">    //引入loading组件</span><br><span class="line">    loading:Loading,</span><br><span class="line">    //引入error组件</span><br><span class="line">    error: Error,</span><br><span class="line">    //超时后显示error组件</span><br><span class="line">    timeout: 250</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结:"></a>总结:</h3><ol>
+<li>动态加载和异步加载都能够提升网页的性能和效率</li>
+<li>要做异步加载必须使用import的动态引入</li>
+<li>动态加载要使用keep-alive组件</li>
+</ol>
+
       
 
       
@@ -250,7 +286,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://rujptw.github.io/catch-the-moment/test/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://rujptw.github.io/catch-the-moment/2019/01/22/动态组件和异步组件/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -262,6 +298,16 @@
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/catch-the-moment/2018/10/19/css炫酷效果-mask遮罩/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">css炫酷效果-mask遮罩</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -312,7 +358,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
